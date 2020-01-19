@@ -3,10 +3,9 @@ cache: bundler
 
 branches:
   only:
-    - master
+    - develop
 rvm:
   - 2.5.3
-  -
 before_install:
   - gem install -v 2.1.4 bundler --no-rdoc --no-ri
 
