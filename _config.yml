@@ -90,5 +90,5 @@ disqus: kkninjae
 #travis
 deploy:
   type: git
-  repo: https://__GITHUB_TOKEN__@github.com/kdevkr/kdevkr.github.io.git
+  repo: https://__GITHUB_TOKEN__@github.com/blue32x/blude32x.github.io.git
   branch: master
