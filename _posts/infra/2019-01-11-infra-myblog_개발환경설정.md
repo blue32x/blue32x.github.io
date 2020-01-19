@@ -1,10 +1,7 @@
 ---
 layout: post
-title: paging test
+title: About GitHub
 categories: [infra]
-pagination:
-    enabled: true
-    tag: infra
 ---
 
 About GitHub
