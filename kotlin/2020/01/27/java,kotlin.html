@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>db 연동(1)</title>
+<title>kotlin (1)</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="" />
@@ -55,7 +55,7 @@
   <div class="card">
 
     
-    <h1 class="card__title article_title">Db 연동(1)</h1>
+    <h1 class="card__title article_title">Kotlin (1)</h1>
     
 
     
@@ -63,54 +63,56 @@
     
 
     <div class="article__content"><h2 id="1서론">1.서론</h2>
-<p>서버와 db를 연동하기 위해 mybatis,jpa,jdbcTemplate 요 세가지를 써봤던 것 같다.
-mybatis, jdbcTemplate 는 이직 전 회사에서, jpa는 현재 회사에서 처음 접해봤다.
-mybatis, jdbcTemplate을 사용했을 때는 개발자가 직접 쿼리를 작성했었어야 했는데
-이전 회사에서는 그나마 자체 솔루션으로 개발자가 비즈니스 로직에만 집중 할 수 있도록 해줘서 괜찮았지만
-막상 스터디를 하려고 스프링 서버와 mybatis를 연동할 때 엄청 귀찮았다. 현재는 jpa를 사용하는 중인데
-특별한 경우가 아니면 쿼리를 직접 작성할 필요가 없어서 편하다.</p>
+<p>java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된 kotlin과 계속 써왔지만 아직도 공부할 게 많은
+자바를 비교하면서 포스팅하면 도움이 많이 될 것 같아서 포스팅 시작.</p>
 
-<h2 id="2mybatisjdbctemplate-vs-jpa">2.mybatis,jdbcTemplate vs jpa</h2>
+<h2 id="2프로그래밍-언어의-왕도는-역시-hello-wold">2.프로그래밍 언어의 왕도는 역시 Hello Wold</h2>
+<p>Java</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class JavaTest {
+    final static String name= "sh.choi";
+    public static void main(String[] args){
+        System.out.println("Hello Wolrd "+name);
+    }
+}
+</code></pre></div></div>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">명칭</th>
-      <th style="text-align: center">장점</th>
-      <th style="text-align: center">단점</th>
-      <th style="text-align: center">특징</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">mybastis</td>
-      <td style="text-align: center">동적쿼리 작성 가능, 쿼리를 잘 파악하고 있으면 유용하다.</td>
-      <td style="text-align: center">query가 어딘가에는 직접 명시 되어야한다.</td>
-      <td style="text-align: center">sql mapper</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">jdbcTemplate</td>
-      <td style="text-align: center">익숙함,jdbc 오류 핸들링이 잘됨.</td>
-      <td style="text-align: center">query가 어딘가에는 직접 명시 되어야한다.</td>
-      <td style="text-align: center">sql mapper</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">jpa</td>
-      <td style="text-align: center">1.quey를 직접 작성하지 않아도 되고 db(mysql,mssql,orcle)에 의존성이 적다</td>
-      <td style="text-align: center">많은 내용이 감싸져 있어서 어렵다.</td>
-      <td style="text-align: center">orm(object relational mapping)</td>
-    </tr>
-  </tbody>
-</table>
+<p>Kotlin</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val name="sh.choi"
 
-<ul>
-  <li>참조
-    <ul>
-      <li><a href="https://gmlwjd9405.github.io/2018/12/25/difference-jdbc-jpa-mybatis.html">mysql,jpa 차이</a></li>
-    </ul>
+fun main(args : Array&lt;String&gt;){
+    println("Hello World $name")
+}
+</code></pre></div></div>
+
+<p>위의 두 소스는 <code class="language-plaintext highlighter-rouge">Hello world sh.choi</code>라는 동일한 결과를 출력한다.</p>
+
+<p>차이가 보이는가? name이라는 변수의 선언 방식, main method의 위치, method의 입력 파라미터
+그리고 출력 시 앞에서 정의한 name을 사용하는 방식이 달라졌다.</p>
+
+<ol>
+  <li>변수 선언
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val -&gt; value : null type이 불가능 
+var -&gt; variable : null type 허용
+</code></pre></div>    </div>
   </li>
-</ul>
+  <li>main method 위치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*.kt 파일의 top level에 main function을 작성 할 수 있다. 
+</code></pre></div>    </div>
+  </li>
+  <li>method 정의 방법
+```
+method의 return type을 명시 하던 위치에 fun이라는 keyword가 들어감
+입력파라미터도  type variabaleName과 같은 형식이 아닌 variableName:type 과 같은 형식으로 바뀜</li>
+</ol>
 
+<p>자바 :   [returnType] <a href="variableType [variableName]">methodName</a>
+                                ↓
+ 코틀린 :  fun <a href="[variableName]:variableType">methodName</a>:[returnType]</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4. 변수 사용방법. 
+</code></pre></div></div>
+<p>String 내부에서 사용하고자 하는 변수 앞에 $를 함꼐 붙여 주면 스트링 안해서도 변수를 사용할 수 있음</p>
+
+<p>```</p>
 </div>
 
   </div>
@@ -128,8 +130,8 @@ mybatis, jdbcTemplate을 사용했을 때는 개발자가 직접 쿼리를 작�
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-  this.page.url = '/java/2020/01/27/jpa.html';
-  this.page.identifier = '/java/2020/01/27/jpa';
+  this.page.url = '/kotlin/2020/01/27/java,kotlin.html';
+  this.page.identifier = '/kotlin/2020/01/27/java,kotlin';
 };
 (function() { // DON'T EDIT BELOW THIS LINE
   var d = document, s = d.createElement('script');
@@ -148,41 +150,21 @@ var disqus_config = function () {
   <div class="post__pagination">
     <ul>
       
+
+      
       <li>
 
 
-<a href="/kotlin/2020/01/27/java,kotlin.html">
+<a href="/java/2020/01/27/jpa.html">
   <div class="card">
 
-    <h1 class="card__title">kotlin (1)</h1>
+    <h1 class="card__title">db 연동(1)</h1>
 
     <div class="card__date">2020 / 01 / 27</div>
 
     
     
-    <div class="card__excerpt">1.서론 java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된...</div>
-
-  </div>
-</a>
-</li>
-      
-
-      
-      <li>
-
-
-<a href="/infra/2020/01/19/github-page.html">
-  <div class="card">
-
-    <h1 class="card__title">깃허브 페이지 만들기</h1>
-
-    <div class="card__date">2020 / 01 / 19</div>
-
-    
-    
-    <div class="card__excerpt">깃허브 페이지 만들기
-
-</div>
+    <div class="card__excerpt">1.서론 서버와 db를 연동하기 위해 mybatis,jpa,jdbcTemplate 요 세가지를 써봤던 것...</div>
 
   </div>
 </a>
