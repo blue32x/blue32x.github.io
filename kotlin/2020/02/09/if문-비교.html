@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>kotlin (1)</title>
+<title>kotlin if문 비교(2)</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="" />
@@ -55,76 +55,46 @@
   <div class="card">
 
     
-    <h1 class="card__title article_title">Kotlin (1)</h1>
+    <h1 class="card__title article_title">Kotlin if문 비교(2)</h1>
     
 
     
-    <div class="card__date">2020 / 01 / 27</div>
+    <div class="card__date">2020 / 02 / 09</div>
     
 
     <div class="article__content"><h2 id="1서론">1.서론</h2>
 <p>java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된 kotlin과 계속 써왔지만 아직도 공부할 게 많은
 자바를 비교하면서 포스팅하면 도움이 많이 될 것 같아서 포스팅 시작.</p>
 
-<h2 id="2프로그래밍-언어의-왕도는-역시-hello-wold">2.프로그래밍 언어의 왕도는 역시 Hello Wold</h2>
+<h2 id="2if문-비교">2.if문 비교</h2>
 <p>Java</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class JavaTest {
     final static String name= "sh.choi";
+
     public static void main(String[] args){
-        System.out.println("Hello Wolrd "+name);
+
+        //java if
+        String value = "";
+        if("test".equals(args[0])){
+            value =args[0];
+        }else{
+            value="";
+        }
     }
 }
 </code></pre></div></div>
 
 <p>Kotlin</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val name="sh.choi"
-
-fun main(args : Array&lt;String&gt;){
-    println("Hello World $name")
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fun main(args : Array&lt;String&gt;){
+    //kotlin if
+    val a = if("test".equals(args[0])){ "sh.choi"}else{ ""}
 }
 </code></pre></div></div>
 
-<p>위의 두 소스는 <code class="language-plaintext highlighter-rouge">Hello world sh.choi</code>라는 동일한 결과를 출력한다.</p>
+<p>위의 두 소스는 프로그램의 args[0]인자가 test일 경우 이름을 변수에 할당하고 아닐 경우 공백을 할당 한다.</p>
 
-<p>차이가 보이는가? name이라는 변수의 선언 방식, main method의 위치, method의 입력 파라미터
-그리고 출력 시 앞에서 정의한 name을 사용하는 방식이 달라졌다.</p>
-
-<ol>
-  <li>변수 선언</li>
-</ol>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val -&gt; value : null type이 불가능 
-var -&gt; variable : null type 허용
-</code></pre></div></div>
-
-<ol>
-  <li>main method 위치</li>
-</ol>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*.kt 파일의 top level에 main function을 작성 할 수 있다. 
-</code></pre></div></div>
-
-<ol>
-  <li>method 정의 방법</li>
-</ol>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>method의 return type을 명시 하던 위치에 fun이라는 keyword가 들어감
-입력파라미터도  type variabaleName과 같은 형식이 아닌 variableName:type 과 같은 형식으로 바뀜
-
-
- 자바 :   [returnType] [methodName] (variableType [variableName])
-                                ↓
- 코틀린 :  fun [methodName]([variableName]:variableType):[returnType]
-
-</code></pre></div></div>
-
-<ol>
-  <li>변수 사용방법.</li>
-</ol>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>String 내부에서 사용하고자 하는 변수 앞에 $를 함꼐 붙여 주면 스트링 내부에서 변수를 사용할 수 있음
-
-</code></pre></div></div>
+<p>차이점을 발견했는가? kotlin의 if문은 문법일 뿐만 아니라 값을 가진다. 기존의 자바의 if문이 문법일 뿐이었다면
+kotlin의 if문은 값도 반환하기 때문에 위의 kotlin 코드 처럼 작성할 수 있다.</p>
 
 </div>
 
@@ -143,8 +113,8 @@ var -&gt; variable : null type 허용
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-  this.page.url = '/kotlin/2020/01/27/java,kotlin.html';
-  this.page.identifier = '/kotlin/2020/01/27/java,kotlin';
+  this.page.url = '/kotlin/2020/02/09/if%EB%AC%B8-%EB%B9%84%EA%B5%90.html';
+  this.page.identifier = '/kotlin/2020/02/09/if문 비교';
 };
 (function() { // DON'T EDIT BELOW THIS LINE
   var d = document, s = d.createElement('script');
@@ -163,39 +133,21 @@ var disqus_config = function () {
   <div class="post__pagination">
     <ul>
       
-      <li>
-
-
-<a href="/kotlin/2020/02/09/if%EB%AC%B8-%EB%B9%84%EA%B5%90.html">
-  <div class="card">
-
-    <h1 class="card__title">kotlin if문 비교(2)</h1>
-
-    <div class="card__date">2020 / 02 / 09</div>
-
-    
-    
-    <div class="card__excerpt">1.서론 java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된...</div>
-
-  </div>
-</a>
-</li>
-      
 
       
       <li>
 
 
-<a href="/java/2020/01/27/jpa.html">
+<a href="/kotlin/2020/01/27/java,kotlin.html">
   <div class="card">
 
-    <h1 class="card__title">db 연동(1)</h1>
+    <h1 class="card__title">kotlin (1)</h1>
 
     <div class="card__date">2020 / 01 / 27</div>
 
     
     
-    <div class="card__excerpt">1.서론 서버와 db를 연동하기 위해 mybatis,jpa,jdbcTemplate 요 세가지를 써봤던 것...</div>
+    <div class="card__excerpt">1.서론 java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된...</div>
 
   </div>
 </a>
