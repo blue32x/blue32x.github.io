@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>db 연동(1)</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="" />
+<link rel="icon" type="image/x-icon" href="" />
+
+<!-- font -->
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i" rel="stylesheet">
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" title="SelfMaker" href="/feed.xml" />
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/page.css" media="all">
+
+</head>
+<body>
+
+  <div class="page-content clear-header--top clear-navbar--top clear-footer--bottom">
+
+    <header class="header">
+  <a class="header__avatar header__avatar--circle" href="/">
+    <img src="/assets/img/me.jpg" alt="">
+  </a>
+</header>
+
+
+    <nav class="navbar">
+  <ul>
+    <li class="navbar__item"><a href="/about/">About me</a></li>
+    <li class="navbar__item"><a href="/infra/index.html">Infra</a></li>
+    <li class="navbar__item"><a href="/algo/index.html">Algorithm</a></li>
+    <li class="navbar__item"><a href="/java/index.html">Java</a></li>
+    <li class="navbar__item"><a href="/kotlin/index.html">Kotlin</a></li>
+    <li class="navbar__item"><a href="/react/index.html">React</a></li>
+    <!--<li class="navbar__item"><a href="https://github.com/kkninjae/book/archive/master.zip">Download</a></li> -->
+  </ul>
+</nav>
+
+
+    <main class="main clear-header--left">
+
+    <div class="post">
+
+  <div class="card">
+
+    
+    <h1 class="card__title article_title">Db 연동(1)</h1>
+    
+
+    
+    <div class="card__date">2020 / 01 / 27</div>
+    
+
+    <div class="article__content"><h2 id="1서론">1.서론</h2>
+<p>서버와 db를 연동하기 위해 mybatis,jpa,jdbcTemplate 요 세가지를 써봤던 것 같다.
+mybatis, jdbcTemplate 는 이직 전 회사에서, jpa는 현재 회사에서 처음 접해봤다.
+mybatis, jdbcTemplate을 사용했을 때는 개발자가 직접 쿼리를 작성했었어야 했는데
+이전 회사에서는 그나마 자체 솔루션으로 개발자가 비즈니스 로직에만 집중 할 수 있도록 해줘서 괜찮았지만
+막상 스터디를 하려고 스프링 서버와 mybatis를 연동할 때 엄청 귀찮았다. 현재는 jpa를 사용하는 중인데
+특별한 경우가 아니면 쿼리를 직접 작성할 필요가 없어서 편하다.</p>
+
+<h2 id="2mybatisjdbctemplate-vs-jpa">2.mybatis,jdbcTemplate vs jpa</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">명칭</th>
+      <th style="text-align: center">장점</th>
+      <th style="text-align: center">단점</th>
+      <th style="text-align: center">특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">mybastis</td>
+      <td style="text-align: center">동적쿼리 작성 가능, 쿼리를 잘 파악하고 있으면 유용하다.</td>
+      <td style="text-align: center">query가 어딘가에는 직접 명시 되어야한다.</td>
+      <td style="text-align: center">sql mapper</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jdbcTemplate</td>
+      <td style="text-align: center">익숙함,jdbc 오류 핸들링이 잘됨.</td>
+      <td style="text-align: center">query가 어딘가에는 직접 명시 되어야한다.</td>
+      <td style="text-align: center">sql mapper</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">jpa</td>
+      <td style="text-align: center">1.quey를 직접 작성하지 않아도 되고 db(mysql,mssql,orcle)에 의존성이 적다</td>
+      <td style="text-align: center">많은 내용이 감싸져 있어서 어렵다.</td>
+      <td style="text-align: center">orm(object relational mapping)</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>참조
+    <ul>
+      <li><a href="https://gmlwjd9405.github.io/2018/12/25/difference-jdbc-jpa-mybatis.html">mysql,jpa 차이</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+
+  </div>
+
+
+  <div class="post__comment">
+    
+    <div class="post__comment--on">
+      
+      
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = '/java/2020/01/27/jpa.html';
+  this.page.identifier = '/java/2020/01/27/jpa';
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://kkninjae.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+    
+  </div>
+
+
+  <div class="post__pagination">
+    <ul>
+      
+      <li>
+
+
+<a href="/kotlin/2020/01/27/java,kotlin.html">
+  <div class="card">
+
+    <h1 class="card__title">kotlin (1)</h1>
+
+    <div class="card__date">2020 / 01 / 27</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된...</div>
+
+  </div>
+</a>
+</li>
+      
+
+      
+      <li>
+
+
+<a href="/infra/2020/01/19/github-page.html">
+  <div class="card">
+
+    <h1 class="card__title">깃허브 페이지 만들기</h1>
+
+    <div class="card__date">2020 / 01 / 19</div>
+
+    
+    
+    <div class="card__excerpt">깃허브 페이지 만들기
+
+</div>
+
+  </div>
+</a>
+</li>
+      
+    </ul>
+  </div>
+
+</div>
+
+
+    </main>
+
+    <footer class="footer clear-header--left">
+  <div class="footer__note">&copy; 2017 Book</div>
+  <div class="footer__note">Built with <a href="https://github.com/kkninjae/book" target="_blank">Book</a>, a <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> theme. <a href="/feed.xml" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/></svg></a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
