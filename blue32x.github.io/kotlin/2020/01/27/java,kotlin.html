@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>kotlin (1)</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="" />
+<link rel="icon" type="image/x-icon" href="" />
+
+<!-- font -->
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i" rel="stylesheet">
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" title="SelfMaker" href="/feed.xml" />
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/page.css" media="all">
+
+</head>
+<body>
+
+  <div class="page-content clear-header--top clear-navbar--top clear-footer--bottom">
+
+    <header class="header">
+  <a class="header__avatar header__avatar--circle" href="/">
+    <img src="/assets/img/me.jpg" alt="">
+  </a>
+</header>
+
+
+    <nav class="navbar">
+  <ul>
+    <li class="navbar__item"><a href="/about/">About me</a></li>
+    <li class="navbar__item"><a href="/infra/index.html">Infra</a></li>
+    <li class="navbar__item"><a href="/algo/index.html">Algorithm</a></li>
+    <li class="navbar__item"><a href="/java/index.html">Java</a></li>
+    <li class="navbar__item"><a href="/kotlin/index.html">Kotlin</a></li>
+    <li class="navbar__item"><a href="/react/index.html">React</a></li>
+    <!--<li class="navbar__item"><a href="https://github.com/kkninjae/book/archive/master.zip">Download</a></li> -->
+  </ul>
+</nav>
+
+
+    <main class="main clear-header--left">
+
+    <div class="post">
+
+  <div class="card">
+
+    
+    <h1 class="card__title article_title">Kotlin (1)</h1>
+    
+
+    
+    <div class="card__date">2020 / 01 / 27</div>
+    
+
+    <div class="article__content"><h2 id="1서론">1.서론</h2>
+<p>java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된 kotlin과 계속 써왔지만 아직도 공부할 게 많은
+자바를 비교하면서 포스팅하면 도움이 많이 될 것 같아서 포스팅 시작.</p>
+
+<h2 id="2프로그래밍-언어의-왕도는-역시-hello-wold">2.프로그래밍 언어의 왕도는 역시 Hello Wold</h2>
+<p>Java</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class JavaTest {
+    final static String name= "sh.choi";
+    public static void main(String[] args){
+        System.out.println("Hello Wolrd "+name);
+    }
+}
+</code></pre></div></div>
+
+<p>Kotlin</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val name="sh.choi"
+
+fun main(args : Array&lt;String&gt;){
+    println("Hello World $name")
+}
+</code></pre></div></div>
+
+<p>위의 두 소스는 <code class="language-plaintext highlighter-rouge">Hello world sh.choi</code>라는 동일한 결과를 출력한다.</p>
+
+<p>차이가 보이는가? name이라는 변수의 선언 방식, main method의 위치, method의 입력 파라미터
+그리고 출력 시 앞에서 정의한 name을 사용하는 방식이 달라졌다.</p>
+
+<ol>
+  <li>변수 선언</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val -&gt; value : null type이 불가능 
+var -&gt; variable : null type 허용
+</code></pre></div></div>
+
+<ol>
+  <li>main method 위치</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*.kt 파일의 top level에 main function을 작성 할 수 있다. 
+</code></pre></div></div>
+
+<ol>
+  <li>method 정의 방법</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>method의 return type을 명시 하던 위치에 fun이라는 keyword가 들어감
+입력파라미터도  type variabaleName과 같은 형식이 아닌 variableName:type 과 같은 형식으로 바뀜
+
+
+ 자바 :   [returnType] [methodName] (variableType [variableName])
+                                ↓
+ 코틀린 :  fun [methodName]([variableName]:variableType):[returnType]
+
+</code></pre></div></div>
+
+<ol>
+  <li>변수 사용방법.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>String 내부에서 사용하고자 하는 변수 앞에 $를 함꼐 붙여 주면 스트링 내부에서 변수를 사용할 수 있음
+
+</code></pre></div></div>
+
+</div>
+
+  </div>
+
+
+  <div class="post__comment">
+    
+    <div class="post__comment--on">
+      
+      
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = '/kotlin/2020/01/27/java,kotlin.html';
+  this.page.identifier = '/kotlin/2020/01/27/java,kotlin';
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://kkninjae.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+    
+  </div>
+
+
+  <div class="post__pagination">
+    <ul>
+      
+      <li>
+
+
+<a href="/kotlin/2020/02/09/if%EB%AC%B8-%EB%B9%84%EA%B5%90.html">
+  <div class="card">
+
+    <h1 class="card__title">kotlin if문 비교(2)</h1>
+
+    <div class="card__date">2020 / 02 / 09</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된...</div>
+
+  </div>
+</a>
+</li>
+      
+
+      
+      <li>
+
+
+<a href="/java/2020/01/27/jpa.html">
+  <div class="card">
+
+    <h1 class="card__title">db 연동(1)</h1>
+
+    <div class="card__date">2020 / 01 / 27</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 서버와 db를 연동하기 위해 mybatis,jpa,jdbcTemplate 요 세가지를 써봤던 것...</div>
+
+  </div>
+</a>
+</li>
+      
+    </ul>
+  </div>
+
+</div>
+
+
+    </main>
+
+    <footer class="footer clear-header--left">
+  <div class="footer__note">&copy; 2017 Book</div>
+  <div class="footer__note">Built with <a href="https://github.com/kkninjae/book" target="_blank">Book</a>, a <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> theme. <a href="/feed.xml" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/></svg></a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
