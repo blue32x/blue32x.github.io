@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>SelfMaker</title>
+<title>코딜리티</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="" />
@@ -50,50 +50,78 @@
 
     <main class="main clear-header--left">
 
-    <div class="posts">
-  <ul>
-    
-    <li>
+    <div class="post">
 
-
-<a href="/infra/2020/04/15/MSA-1%EC%9E%A5.html">
   <div class="card">
 
-    <h1 class="card__title">1장 모놀리식 지옥에서 벗어나자.</h1>
-
-    <div class="card__date">2020 / 04 / 15</div>
+    
+    <h1 class="card__title article_title">코딜리티</h1>
+    
 
     
+    <div class="card__date">2019 / 01 / 11</div>
     
-    <div class="card__excerpt">[MSA] - 1장 모놀리식 지옥에서 벗어나자.
 
+    <div class="article__content"><h2 id="container-to-image">Container to image</h2>
+<hr />
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker commit [container name] [targer image name]
+ex) docker commit websver webserver
+
+docker image에 태그 달기
+
+docker tag [image name] [user_id]/[tag]
+</code></pre></div></div>
+<h2 id="docker-push">Docker push</h2>
+<hr />
+
+<ul>
+  <li>docker login
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker login 커맨드 실행
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>*docker push</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker push blue32x/myblog:tagname 명령어 실행
+</code></pre></div></div>
 </div>
 
   </div>
-</a>
-</li>
+
+
+  <div class="post__comment">
     
-    <li>
+    <div class="post__comment--on">
+      
+      
 
 
-<a href="/infra/2020/01/19/github-page.html">
-  <div class="card">
 
-    <h1 class="card__title">깃허브 페이지 만들기</h1>
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = '/algo/2019/01/11/pushdockerhub.html';
+  this.page.identifier = '/algo/2019/01/11/pushdockerhub';
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://kkninjae.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-    <div class="card__date">2020 / 01 / 19</div>
-
+    </div>
     
-    
-    <div class="card__excerpt">깃허브 페이지 만들기
-
-</div>
-
   </div>
-</a>
-</li>
-    
-    <li>
+
+
+  <div class="post__pagination">
+    <ul>
+      
+      <li>
 
 
 <a href="/infra/2019/01/11/infra-myblog_%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95.html">
@@ -112,8 +140,10 @@
   </div>
 </a>
 </li>
-    
-    <li>
+      
+
+      
+      <li>
 
 
 <a href="/infra/2019/01/10/settingforFrameWork2.html">
@@ -125,77 +155,15 @@
 
     
     
-    <div class="card__excerpt">환경셋팅(2)
-
-  
-    설치 구성
-    
-      Virtual Box
-      Centos7
-      framework
-      aws로 기동 중인 oracle server
-      tomcat7
-    
-  
-
-
-</div>
+    <div class="card__excerpt">환경셋팅(2) 설치 구성 Virtual Box Centos7 framework aws로 기동 중인...</div>
 
   </div>
 </a>
 </li>
-    
-    <li>
-
-
-<a href="/infra/2019/01/09/settingforFrameWork01.html">
-  <div class="card">
-
-    <h1 class="card__title">환경셋팅(1)</h1>
-
-    <div class="card__date">2019 / 01 / 09</div>
-
-    
-    
-    <div class="card__excerpt">환경셋팅(1)
-
-  
-    설치 구성
-    
-      Virtual Box
-      Centos7
-    
-  
-
-
-</div>
-
+      
+    </ul>
   </div>
-</a>
-</li>
-    
-  </ul>
-</div>
 
-<div>
-  
-</div>
-
-<style lang="scss">
-    .pagination {
-        margin: auto;
-        text-align: center;
-        display: block;
-        font-size: 1.1rem;
-        font-weight: bold;
-        padding: 55px 0 25px 0;
-        color: #999;
-    }
-    span.pagination-selected {
-        display: inline-block;
-        font-size: 1.3rem;
-    }
-</style>
 </div>
 
 
