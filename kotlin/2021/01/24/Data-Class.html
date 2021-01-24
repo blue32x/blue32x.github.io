@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Immutable 입력파라미</title>
+<title>data Class</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="" />
@@ -56,38 +56,56 @@
   <div class="card">
 
     
-    <h1 class="card__title article_title">Immutable 입력파라미</h1>
+    <h1 class="card__title article_title">Data class</h1>
     
 
     
-    <div class="card__date">2020 / 08 / 06</div>
+    <div class="card__date">2021 / 01 / 24</div>
     
 
-    <div class="article__content"><h2 id="1코틀린-메쏘드-입력-파라미터">1.코틀린 메쏘드 입력 파라미터</h2>
-<p>코틀린에서는 메쏘드의 입력파라미터는 불변이다. 리팩토링 하다가 자바처럼 입력파라미터로 받은 변수의
-값을 변경하는 로직을 넣었는데 오류처리 하길래 찾아봄</p>
+    <div class="article__content"><h2 id="1코틀린-data-class">1.코틀린 data Class</h2>
+<p>class가 데이터를 저장하는 역할만을 수행한다면 toString, equeals, hashCode를 반드시 오버라이드해야 한다.
+물론 IDE에서 자동으로 정의해수고 정확성과 일관성을 검사해준다.
+코틀린은 data라는 변경자를 클래스 앞에 붙이면 필요한 메소드를 컴파일러가 자동으로 만들어준다.
+data 변경자가 붙은 클래스를 데이터 클래스라고 부른다.</p>
 
-<p>Java</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private void test(int a){
-    a+=1  //가능
-}
+<p>ex)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data class Client(val name: String, val postalCode: Int)
+</code></pre></div></div>
+<ul>
+  <li>인스턴스간 비교를 위한 equeals</li>
+  <li>HashMap과 같은 해시 기반 컨테이너에서 키로 사용할 수 있는 hashCode</li>
+  <li>클래스와 각 필드를 선언 순서대로 표시하는 문자열 표현을 만들어주는 toString</li>
+</ul>
+
+<p>코틀린은 data class의 프로퍼티들을 읽기전용으로 만들어 불변 클래스로 만들라고 권장한다.</p>
+
+<ul>
+  <li>멀티 쓰레드 환경에서 불변 객체를 다른 쓰레드가 변경할 수 없기 때문데 동기화 필요성이 줄어든다</li>
+  <li>데이터를 추론하기 쉽다.</li>
+  <li>불변 객체를 쉽게 사용하기 위해 copy라는 메쏘드를 제공하여 원본에 영향을 주지 않는 기능을 제공한다.</li>
+</ul>
+
+<p>이슈
+springboot 환경에서 data class를 api의 response로 셋팅했을 경우
+실제 데이터가 있음에도 swagger의 응답으로 response가 비워져서 옴
+java의 경우 lombok annotation @RequiredArgument, @getter, @setter를 이용하여 해결
+했지만 kotlin의 경우 lombok을 사용하지 않음
+각 프로퍼티의 default value를 설정하거나 default constructor를 새로 셋팅 하는 것으로 해결했다.</p>
+
+<p>Sol1</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data class Client(val name: String ="", val postalCode: Int=0)
 </code></pre></div></div>
 
-<p>Kotlin</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private fun test(a: Int){
-    a+=1  //불가능
+<p>Sol2</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data class Client(val name: String, val postalCode){
+    constructor() : this("",0)
 }
+
 </code></pre></div></div>
 
-<p>코틀린은 왜 메쏘드의 입력파라미를 불변으로 강제하는가?</p>
-<ol>
-  <li>runtime 시 점에 비용이 많이 든다.</li>
-  <li>대부분의 사람들이 매개변수를 참조로 전달한다고 생각함 (지원안함)</li>
-</ol>
-
-<p>참조</p>
-
-<p><a href="https://blog.jetbrains.com/kotlin/2013/02/kotlin-m5-1/?_ga=2.231515743.1902679046.1596696070-410032598.1596696070">kotlinblog</a></p>
+<p>참조
+kotlinInAction</p>
 
 </div>
 
@@ -106,8 +124,8 @@
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-  this.page.url = '/kotlin/2020/08/06/Immutable%EC%9E%85%EB%A0%A5%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0.html';
-  this.page.identifier = '/kotlin/2020/08/06/ Immutable입력파라미터';
+  this.page.url = '/kotlin/2021/01/24/Data-Class.html';
+  this.page.identifier = '/kotlin/2021/01/24/ Data Class';
 };
 (function() { // DON'T EDIT BELOW THIS LINE
   var d = document, s = d.createElement('script');
@@ -126,41 +144,21 @@ var disqus_config = function () {
   <div class="post__pagination">
     <ul>
       
-      <li>
-
-
-<a href="/kotlin/2021/01/24/Data-Class.html">
-  <div class="card">
-
-    <h1 class="card__title">data Class</h1>
-
-    <div class="card__date">2021 / 01 / 24</div>
-
-    
-    
-    <div class="card__excerpt">1.코틀린 data Class class가 데이터를 저장하는 역할만을 수행한다면 toString, equeals,...</div>
-
-  </div>
-</a>
-</li>
-      
 
       
       <li>
 
 
-<a href="/infra/2020/04/15/MSA-1%EC%9E%A5.html">
+<a href="/kotlin/2020/08/06/Immutable%EC%9E%85%EB%A0%A5%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0.html">
   <div class="card">
 
-    <h1 class="card__title">1장 모놀리식 지옥에서 벗어나자.</h1>
+    <h1 class="card__title">Immutable 입력파라미</h1>
 
-    <div class="card__date">2020 / 04 / 15</div>
+    <div class="card__date">2020 / 08 / 06</div>
 
     
     
-    <div class="card__excerpt">[MSA] - 1장 모놀리식 지옥에서 벗어나자.
-
-</div>
+    <div class="card__excerpt">1.코틀린 메쏘드 입력 파라미터 코틀린에서는 메쏘드의 입력파라미터는 불변이다. 리팩토링 하다가...</div>
 
   </div>
 </a>
