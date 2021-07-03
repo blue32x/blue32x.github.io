@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>1장 모놀리식 지옥에서 벗어나자.</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="" />
+<link rel="icon" type="image/x-icon" href="" />
+
+<!-- font -->
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i" rel="stylesheet">
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" title="SelfMaker" href="/feed.xml" />
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/page.css" media="all">
+
+</head>
+<body>
+
+  <div class="page-content clear-header--top clear-navbar--top clear-footer--bottom">
+
+    <header class="header">
+  <a class="header__avatar header__avatar--circle" href="/">
+    <img src="/assets/img/me.jpg" alt="">
+  </a>
+</header>
+
+
+    <nav class="navbar">
+  <ul>
+    <li class="navbar__item"><a href="/about/">About me</a></li>
+    <li class="navbar__item"><a href="/infra/index.html">Infra</a></li>
+    <li class="navbar__item"><a href="/algo/index.html">Algorithm</a></li>
+    <li class="navbar__item"><a href="/java/index.html">Java</a></li>
+    <li class="navbar__item"><a href="/kotlin/index.html">Kotlin</a></li>
+    <li class="navbar__item"><a href="/react/index.html">React</a></li>
+    <li class="navbar__item"><a href="/test/index.html">Test</a></li>
+    <!--<li class="navbar__item"><a href="https://github.com/kkninjae/book/archive/master.zip">Download</a></li> -->
+  </ul>
+</nav>
+
+
+    <main class="main clear-header--left">
+
+    <div class="post">
+
+  <div class="card">
+
+    
+    <h1 class="card__title article_title">1장 모놀리식 지옥에서 벗어나자.</h1>
+    
+
+    
+    <div class="card__date">2020 / 04 / 15</div>
+    
+
+    <div class="article__content"><h2 id="msa---1장-모놀리식-지옥에서-벗어나자">[MSA] - 1장 모놀리식 지옥에서 벗어나자.</h2>
+
+<ol>
+  <li>모놀리식 아키텍쳐
+    <ul>
+      <li>의미 : MSA가 아닌 전통 아키텍쳐를 가리키는 지칭</li>
+      <li>구조 : 책에서는 FTGO를 예를 들었는데 아래 사진이 가장 비슷할 것 같다.
+비즈니스로직과 외부 시스템은 어댑터(adapter)를 통해 연결되어 있다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="../../assets/img/hexagonal-arch-5-traditional2.png" alt="traditional" /></p>
+<ul>
+  <li>장단점</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>장점</td>
+      <td>1. 개발이 간단하다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>2. 애플리케이션을 변경하기 쉽다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>3. 테스트하기 슆다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>4. 배포하기 쉽다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>3. 확장하기 쉽다.</td>
+    </tr>
+    <tr>
+      <td>단점</td>
+      <td><strong>어플리케이션의 규모가 커지면 장점이 단점이 되어 버린다!.</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>왜? 단일 소스코드 스토리지를 가진 규모가 큰 팀이 함께 개발을 한다면… 위의 장점은 단점이 된다.
+  <img src="../../assets/img/traditional_pipeline.png" alt="traditional" /></li>
+</ul>
+
+<ol>
+  <li>MSA 패턴</li>
+</ol>
+
+<ul>
+  <li>확장 큐브 :</li>
+</ul>
+
+<p><img src="../../assets/img/aos.jpg" alt="aos" /></p>
+
+<ul>
+  <li>x축 : 다중 인스턴스에 요청 분산</li>
+  <li>y축 : 요청 속성별 라우팅</li>
+  <li>
+    <p>z축 : 기능에 의한 서비스 분리</p>
+  </li>
+  <li>장단점</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>장점</td>
+      <td>1. 크고 복잡한 애플리케이션을 지속적으로 전달/배포 가능</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>2. 서비스 규모가 작아 관리하기 쉽다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>3. 서비스를 독립적으로 배포/확장할 수 있다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>4. 결함격리가 잘된다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>3. 신기술 도입이 쉽다.</td>
+    </tr>
+    <tr>
+      <td>단점</td>
+      <td>1.적절한 서비스를 찾기 쉽지 않다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>2. 복잡도가 상승한다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>3. 공통 기능 배포에 신경써야 한다.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>4. 도입시기를 결정하기 어렵다.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+  </div>
+
+
+  <div class="post__comment">
+    
+    <div class="post__comment--on">
+      
+      
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = '/infra/2020/04/15/MSA-1%EC%9E%A5.html';
+  this.page.identifier = '/infra/2020/04/15/[MSA]-1장';
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://kkninjae.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+    
+  </div>
+
+
+  <div class="post__pagination">
+    <ul>
+      
+      <li>
+
+
+<a href="/issue/2020/07/03/issue1.html">
+  <div class="card">
+
+    <h1 class="card__title">RateLimiter 동작 이슈</h1>
+
+    <div class="card__date">2020 / 07 / 03</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 TPS(Transaction per Second) 조절을 위해 Redis를 활용한 RateLimiter를 개발하면서...</div>
+
+  </div>
+</a>
+</li>
+      
+
+      
+      <li>
+
+
+<a href="/react/2020/03/08/intelij,typescript,react.html">
+  <div class="card">
+
+    <h1 class="card__title">react (1)</h1>
+
+    <div class="card__date">2020 / 03 / 08</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 이전에 개발했던 react page는 state 관리가 중구 난방이고 페이지관리가...</div>
+
+  </div>
+</a>
+</li>
+      
+    </ul>
+  </div>
+
+</div>
+
+
+    </main>
+
+    <footer class="footer clear-header--left">
+  <div class="footer__note">&copy; 2017 Book</div>
+  <div class="footer__note">Built with <a href="https://github.com/kkninjae/book" target="_blank">Book</a>, a <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> theme. <a href="/feed.xml" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/></svg></a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

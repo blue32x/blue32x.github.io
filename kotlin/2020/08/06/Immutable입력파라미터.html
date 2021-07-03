@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Immutable 입력파라미</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="" />
+<link rel="icon" type="image/x-icon" href="" />
+
+<!-- font -->
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i" rel="stylesheet">
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" title="SelfMaker" href="/feed.xml" />
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/page.css" media="all">
+
+</head>
+<body>
+
+  <div class="page-content clear-header--top clear-navbar--top clear-footer--bottom">
+
+    <header class="header">
+  <a class="header__avatar header__avatar--circle" href="/">
+    <img src="/assets/img/me.jpg" alt="">
+  </a>
+</header>
+
+
+    <nav class="navbar">
+  <ul>
+    <li class="navbar__item"><a href="/about/">About me</a></li>
+    <li class="navbar__item"><a href="/infra/index.html">Infra</a></li>
+    <li class="navbar__item"><a href="/algo/index.html">Algorithm</a></li>
+    <li class="navbar__item"><a href="/java/index.html">Java</a></li>
+    <li class="navbar__item"><a href="/kotlin/index.html">Kotlin</a></li>
+    <li class="navbar__item"><a href="/react/index.html">React</a></li>
+    <li class="navbar__item"><a href="/test/index.html">Test</a></li>
+    <!--<li class="navbar__item"><a href="https://github.com/kkninjae/book/archive/master.zip">Download</a></li> -->
+  </ul>
+</nav>
+
+
+    <main class="main clear-header--left">
+
+    <div class="post">
+
+  <div class="card">
+
+    
+    <h1 class="card__title article_title">Immutable 입력파라미</h1>
+    
+
+    
+    <div class="card__date">2020 / 08 / 06</div>
+    
+
+    <div class="article__content"><h2 id="1코틀린-메쏘드-입력-파라미터">1.코틀린 메쏘드 입력 파라미터</h2>
+<p>코틀린에서는 메쏘드의 입력파라미터는 불변이다. 리팩토링 하다가 자바처럼 입력파라미터로 받은 변수의
+값을 변경하는 로직을 넣었는데 오류처리 하길래 찾아봄</p>
+
+<p>Java</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private void test(int a){
+    a+=1  //가능
+}
+</code></pre></div></div>
+
+<p>Kotlin</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private fun test(a: Int){
+    a+=1  //불가능
+}
+</code></pre></div></div>
+
+<p>코틀린은 왜 메쏘드의 입력파라미를 불변으로 강제하는가?</p>
+<ol>
+  <li>runtime 시 점에 비용이 많이 든다.</li>
+  <li>대부분의 사람들이 매개변수를 참조로 전달한다고 생각함 (지원안함)</li>
+</ol>
+
+<p>참조</p>
+
+<p><a href="https://blog.jetbrains.com/kotlin/2013/02/kotlin-m5-1/?_ga=2.231515743.1902679046.1596696070-410032598.1596696070">kotlinblog</a></p>
+
+</div>
+
+  </div>
+
+
+  <div class="post__comment">
+    
+    <div class="post__comment--on">
+      
+      
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = '/kotlin/2020/08/06/Immutable%EC%9E%85%EB%A0%A5%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0.html';
+  this.page.identifier = '/kotlin/2020/08/06/ Immutable입력파라미터';
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://kkninjae.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+    
+  </div>
+
+
+  <div class="post__pagination">
+    <ul>
+      
+      <li>
+
+
+<a href="/kotlin/2021/01/24/Data-Class.html">
+  <div class="card">
+
+    <h1 class="card__title">data Class</h1>
+
+    <div class="card__date">2021 / 01 / 24</div>
+
+    
+    
+    <div class="card__excerpt">1.코틀린 data Class class가 데이터를 저장하는 역할만을 수행한다면 toString, equeals,...</div>
+
+  </div>
+</a>
+</li>
+      
+
+      
+      <li>
+
+
+<a href="/issue/2020/07/03/issue1.html">
+  <div class="card">
+
+    <h1 class="card__title">RateLimiter 동작 이슈</h1>
+
+    <div class="card__date">2020 / 07 / 03</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 TPS(Transaction per Second) 조절을 위해 Redis를 활용한 RateLimiter를 개발하면서...</div>
+
+  </div>
+</a>
+</li>
+      
+    </ul>
+  </div>
+
+</div>
+
+
+    </main>
+
+    <footer class="footer clear-header--left">
+  <div class="footer__note">&copy; 2017 Book</div>
+  <div class="footer__note">Built with <a href="https://github.com/kkninjae/book" target="_blank">Book</a>, a <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> theme. <a href="/feed.xml" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/></svg></a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>kotlin 반복문 비교(2)</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="" />
+<link rel="icon" type="image/x-icon" href="" />
+
+<!-- font -->
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i" rel="stylesheet">
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" title="SelfMaker" href="/feed.xml" />
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/page.css" media="all">
+
+</head>
+<body>
+
+  <div class="page-content clear-header--top clear-navbar--top clear-footer--bottom">
+
+    <header class="header">
+  <a class="header__avatar header__avatar--circle" href="/">
+    <img src="/assets/img/me.jpg" alt="">
+  </a>
+</header>
+
+
+    <nav class="navbar">
+  <ul>
+    <li class="navbar__item"><a href="/about/">About me</a></li>
+    <li class="navbar__item"><a href="/infra/index.html">Infra</a></li>
+    <li class="navbar__item"><a href="/algo/index.html">Algorithm</a></li>
+    <li class="navbar__item"><a href="/java/index.html">Java</a></li>
+    <li class="navbar__item"><a href="/kotlin/index.html">Kotlin</a></li>
+    <li class="navbar__item"><a href="/react/index.html">React</a></li>
+    <li class="navbar__item"><a href="/test/index.html">Test</a></li>
+    <!--<li class="navbar__item"><a href="https://github.com/kkninjae/book/archive/master.zip">Download</a></li> -->
+  </ul>
+</nav>
+
+
+    <main class="main clear-header--left">
+
+    <div class="post">
+
+  <div class="card">
+
+    
+    <h1 class="card__title article_title">Kotlin 반복문 비교(2)</h1>
+    
+
+    
+    <div class="card__date">2020 / 02 / 11</div>
+    
+
+    <div class="article__content"><h2 id="1서론">1.서론</h2>
+<p>java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된 kotlin과 계속 써왔지만 아직도 공부할 게 많은
+자바를 비교하면서 포스팅하면 도움이 많이 될 것 같아서 포스팅 시작.</p>
+
+<h2 id="2if문-비교">2.if문 비교</h2>
+<p>Java</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class JavaTest {
+    final static String name= "sh.choi";
+    public static void main(String[] args){
+       //init
+        List&lt;Long&gt; list = new ArrayList&lt;Long&gt;();
+        list.add(1L);
+        list.add(2L);
+        list.add(3L);
+        list.add(4L);
+        //java for
+        for(int i=0; i&lt;list.size();i++){
+           System.out.println("value : "+list.get(i));
+       }
+        //java for each
+        for(Long i : list){
+            System.out.println("value : "+i);
+        }
+        //java stream
+        list.stream().map(it -&gt; print(it)).collect(Collectors.toList());
+
+    }
+    static Long  print(Long i){
+        System.out.println("value : "+i);
+        return i;
+    }
+}
+</code></pre></div></div>
+
+<p>Kotlin</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fun main(args : Array&lt;String&gt;){
+    //kotlin if
+    val a = if("test".equals(args[0])){ "sh.choi"}else{ ""}
+}
+</code></pre></div></div>
+
+<p>위의 두 소스는 프로그램의 args[0]인자가 test일 경우 이름을 변수에 할당하고 아닐 경우 공백을 할당 한다.</p>
+
+<p>차이점을 발견했는가? kotlin의 if문은 문법일 뿐만 아니라 값을 가진다. 기존의 자바의 if문이 문법일 뿐이었다면
+kotlin의 if문은 값도 반환하기 때문에 위의 kotlin 코드 처럼 작성할 수 있다.</p>
+
+</div>
+
+  </div>
+
+
+  <div class="post__comment">
+    
+    <div class="post__comment--on">
+      
+      
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = 'http://localhost:4000/kotlin/2020/02/11/%EB%B0%98%EB%B3%B5%EB%AC%B8-%EB%B9%84%EA%B5%90.html';
+  this.page.identifier = '/kotlin/2020/02/11/반복문 비교';
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://kkninjae.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+    
+  </div>
+
+
+  <div class="post__pagination">
+    <ul>
+      
+      <li>
+
+
+<a href="/react/2020/03/08/intelij,typescript,react.html">
+  <div class="card">
+
+    <h1 class="card__title">react (1)</h1>
+
+    <div class="card__date">2020 / 03 / 08</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 이전에 개발했던 react page는 state 관리가 중구 난방이고 페이지관리가...</div>
+
+  </div>
+</a>
+</li>
+      
+
+      
+      <li>
+
+
+<a href="/kotlin/2020/02/09/if%EB%AC%B8-%EB%B9%84%EA%B5%90.html">
+  <div class="card">
+
+    <h1 class="card__title">kotlin if문 비교(2)</h1>
+
+    <div class="card__date">2020 / 02 / 09</div>
+
+    
+    
+    <div class="card__excerpt">1.서론 java와 kotlin 뭐가 다를까? 이직 후 처음 접하게 된...</div>
+
+  </div>
+</a>
+</li>
+      
+    </ul>
+  </div>
+
+</div>
+
+
+    </main>
+
+    <footer class="footer clear-header--left">
+  <div class="footer__note">&copy; 2017 Book</div>
+  <div class="footer__note">Built with <a href="https://github.com/kkninjae/book" target="_blank">Book</a>, a <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> theme. <a href="/feed.xml" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/></svg></a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
